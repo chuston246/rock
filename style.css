@@ -1,113 +1,179 @@
-body {
-    background-image: url(../img/dark_wall.png);
-    color: #e5e5e5;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 16px;
-    min-width: 300px;
+body{
+    margin: 0;
+    background: black;
+    color: white;
+    font-family:sans-serif,Arial, Helvetica, sans-serif;
+}
+#title{
+    font-size: 80px;
+    margin-bottom: 0px;
+}
+.desc{
+    font-size: 30px;
+}
+#cta{
+    opacity: 0;
+    margin: 20px 0 80px 0;
+    font-size: 40px;
+    transform: translateY(-150px);
+}
+#btn-container{
+    display: flex;
+    justify-content: center;
+}
+.button{
+    width: 200px;
+    height: 200px;
+    border: 1px white;
+    margin: 0 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.4s ease;
+}
+.button img{
+    width: 150px;
+}
+.button:hover{
+    cursor: pointer;
+    transform: scale();
+    box-shadow: violet;
+}
+#score-label,
+#score-container{
+    display: flex;
+    justify-content: center;
 
-color: #e5e5e5;  
-    font-size: 1.2em;
-    padding: 7px;
+}
+.label{
+    font-size: 30px;
+    margin-top: 80px;
+    padding: 0px 40px;
+}
+.score{
+font-size: 80px;
+padding-top: 0px 40px;
+}
+#results-container{
+    margin-top: 60px;
     text-align: center;
+    opacity: 0;
+    transition: all 1s ease;
 }
-userHover {
-    border: 1px solid #ffb900;
-    -webkit-box-shadow: 0px 1px 5px 0px #ffb900;
-            box-shadow: 0px 1px 5px 0px #ffb900;
+#end-alert{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
-.userClick {
-    border: 1px solid #ffb900;
-    -webkit-box-shadow: 0px 1px 5px 0px #ffb900;
-            box-shadow: 0px 1px 5px 0px #ffb900;
-    -webkit-transition: all 3s ease;
-    -o-transition: all 3s ease;
-    transition: all 3s ease;
-    -webkit-transform: scale(1.1);
-        -ms-transform: scale(1.1);
-            transform: scale(1.1);
+#end-desc{
+    font-size: 50px;
+    margin-bottom: 25px;
 }
-img {
-    height: 40px;
-}
-
-.player-label {
-    margin-bottom: 5px;
-    margin-top: 15px;
-}
-player-type img {
-    height: 35px;
-    margin-top: 5px;
-}
-.user-score, .computer-score {
-    font-size: 2em;
-    color: #ffb900;
-}
-    .user-profile, .computer-profile {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-pack: justify;
-            -ms-flex-pack: justify;
-                justify-content: space-between;
-        margin: 0 15px;
-        padding-bottom: 5px;
+#retry-btn {
+    display: inline-block;
+    padding: 0.8em 1.4em;
+    border-radius: 0.15em;
+    box-sizing: border-box;
+    text-decoration: none;
+    color: #646464;
+    background-color: rgb(245, 245, 245);
+    box-shadow: inset 0 -0.6em 0 -0.35em rgba(0, 0, 0, 0.17);
+    position: relative;
+    margin-top: 25px;
+    opacity: 0;
+  }
+  #retry-btn:hover {
+    cursor: pointer;
+    filter: brightness(1.1);
+    transform: scale(1.05);
+  }
+  #end-alert.disappear,
+  .disappear {
+    display: none;
+  }
+  #game-container {
+    opacity: 0;
+    pointer-events: none;
+  }
+  span {
+    opacity: 0;
+    transition: all 1s ease;
+  }
+  .fade {
+    opacity: 1;
+  }
+  #results.container.no-transition {
+    transition: none;
+  }
+  #desc1.fade-out,
+  #desc2.fade-out,
+  #desc3.fade-out,
+  .fade-out {
+    animation-name: fade-out;
+    animation-duration: 800ms;
+    animation-timing-function: ease-in;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+  }
+  
+  @keyframes fade-out {
+    from {
+      opacity: 1;
     }
-    .user-buttons, .computer-buttons {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-pack: justify;
-            -ms-flex-pack: justify;
-                justify-content: space-between;
+    to {
+      opacity: 0;
     }
-    .user-buttons > * {
-        -webkit-box-flex: 0;
-            -ms-flex: 0 1 20%;
-                flex: 0 1 20%;
+  }
+  #desc1.skip-anime,
+  #desc3.skip-anime,
+  #desc3.skip-anime {
+    animation: fade-out;
+    animation-duration: 0;
+  }
+  
+  #cta.drop-down {
+    animation-name: drop-down;
+    animation-duration: 300ms;
+    animation-timing-function: cubic-bezier(0.58, 0.3, 0.49, 1.39);
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+  }
+  @keyframes drop-down {
+    from {
+      opacity: 0;
+      transform: translateY(-150px);
+      pointer-events: none;
     }
-    .computer-buttons > * {
-        -webkit-box-flex: 0;
-            -ms-flex: 0 1 20%;
-                flex: 0 1 20%;
+    to {
+      opacity: 1;
+      transform: translateY(0px);
+      pointer-events: all;
     }
-    
-    .user-icon {
-    
-        font-size: 1.2em;
-    }
-    
-    .button h3:last-child {
-        padding-top: 5px;
-    }
-    
-    .computerPick {
-        border: 1px solid #ffb900;
-        -webkit-box-shadow: 0px 1px 5px 0px #ffb900;
-                box-shadow: 0px 1px 5px 0px #ffb900;
-        -webkit-transition: all 3s ease;
-        -o-transition: all 3s ease;
-        transition: all 3s ease;
-        -webkit-transform: scale(1.1);
-            -ms-transform: scale(1.1);
-                transform: scale(1.1);
-    }
-    .game-wrapper {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-orient: horizontal;
-        -webkit-box-direction: normal;
-            -ms-flex-direction: row;
-                flex-direction: row;
-        max-width: 850px;
-    }
-
-    .game-wrapper > * {
-        -webkit-box-flex: 0;
-            -ms-flex: 0 1 45%;
-                flex: 0 1 45%;
-    }
-
-    .player-wrapper {
-        margin: 0 15px;
-    }
+  }
+  #retry-btn.fade-in {
+    animation-name: fade-in;
+    animation-duration: 00ms;
+    animation-timing-function: ease-out;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+  }
+  #game-container.fade-in {
+    animation-name: fade-in;
+    animation-duration: 00ms;
+    animation-timing-function: ease-out;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+  }
+  
+  @keyframes fade-in{
+      from{
+          opacity: 0;
+          pointer-events: none;
+      }
+      to{
+          opacity: 1;
+          pointer-events: all;
+      }
+  }
